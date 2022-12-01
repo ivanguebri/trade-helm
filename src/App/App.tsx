@@ -4,7 +4,7 @@ import { TItem } from "../features/items/types";
 import { TForm } from "./types";
 
 import { ELoadingStatus } from "./enums";
-import { EColorScheme } from "../ui/controls/Button/enums";
+import { EColorScheme, EVariant } from "../ui/controls/Button/enums";
 
 import itemsAPI from "../features/items/api";
 
@@ -67,7 +67,9 @@ export default function App(): JSX.Element {
         {items.map((item) => (
           <li key={item.id}>
             {item.text}
-            <button onClick={() => onRemove(item.id)}>delete</button>
+            <Button variant={EVariant.Link} onClick={() => onRemove(item.id)}>
+              delete
+            </Button>
           </li>
         ))}
       </ul>

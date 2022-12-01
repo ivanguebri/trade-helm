@@ -77,7 +77,7 @@ export default function App(): JSX.Element {
             <TextField name="text"></TextField>
             <ModalFooter>
               <Button type="button" onClick={onCloseModal}>
-                Cancel
+                Close
               </Button>
               <Button
                 type="submit"

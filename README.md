@@ -5,7 +5,7 @@ video](https://www.youtube.com/watch?v=NJLDItdl01Q) I've added the
 following features (takes this as a TODO list also):
 
 ## TODO
-- [ ] link style button.
+- [x] Link style button.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

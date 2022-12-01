@@ -6,6 +6,10 @@ following features (takes this as a TODO list also):
 
 ## TODO
 - [x] Link style button.
+- [ ] Create List and ListItem components.
+- [ ] Use localStorage in order to persist data.
+- [ ] Fix styling in order to keep consistency with the suggested
+mockups.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

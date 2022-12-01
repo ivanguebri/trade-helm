@@ -1,4 +1,4 @@
 export enum EColorScheme {
-  Primary,
-  Secondary,
+  Primary = "primary",
+  Secondary = "secondary",
 }

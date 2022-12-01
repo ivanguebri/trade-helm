@@ -1,11 +1,14 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import { TItem } from "../features/items/types";
+import { TForm } from "./types";
+
+import { ELoadingStatus } from "./enums";
+import { EColorScheme } from "../ui/controls/Button/enums";
 
 import itemsAPI from "../features/items/api";
-import { ELoadingStatus } from "./enums";
+
 import Button from "../ui/controls/Button";
-import { EColorScheme } from "../ui/controls/Button/enums";
 import Modal from "../ui/presentation/Modal";
 import TextField from "../ui/controls/TextField";
 import ModalFooter from "../ui/presentation/ModalFooter";
@@ -25,6 +28,31 @@ export default function App(): JSX.Element {
     });
   }, []);
 
+  const onOpenModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const onCloseModal = () => {
+    setIsModalVisible(false);
+  };
+
+  const onRemove = (id: TItem["id"]) => {
+    itemsAPI.remove(id).then((removedId) => {
+      setItems(items.filter((item) => item.id !== removedId));
+    });
+  };
+
+  const onAdd = (event: React.FormEvent<TForm>) => {
+    event.preventDefault();
+
+    const text = event.currentTarget.text.value.trim();
+    if (text) {
+      itemsAPI.create(text).then((newItem) => setItems(items.concat(newItem)));
+    }
+
+    onCloseModal();
+  };
+
   if (loadingStatus === ELoadingStatus.Loading) {
     return <span>Loading...</span>;
   }
@@ -39,24 +67,27 @@ export default function App(): JSX.Element {
         {items.map((item) => (
           <li key={item.id}>
             {item.text}
-            <button>delete</button>
+            <button onClick={() => onRemove(item.id)}>delete</button>
           </li>
         ))}
       </ul>
-      <Button
-        colorScheme={EColorScheme.Primary}
-        onClick={() => setIsModalVisible(true)}
-      >
+      <Button colorScheme={EColorScheme.Primary} onClick={onOpenModal}>
         Add Item
       </Button>
       {isModalVisible && (
-        <Modal onClose={() => setIsModalVisible(false)}>
-          <form>
+        <Modal onClose={onCloseModal}>
+          <form onSubmit={onAdd}>
             <h2>Add Item</h2>
             <TextField name="text"></TextField>
             <ModalFooter>
-              <Button type="button">Cancel</Button>
-              <Button type="submit" colorScheme={EColorScheme.Primary}>
+              <Button type="button" onClick={onCloseModal}>
+                Cancel
+              </Button>
+              <Button
+                type="submit"
+                colorScheme={EColorScheme.Primary}
+                onClick={() => {}}
+              >
                 Add
               </Button>
             </ModalFooter>

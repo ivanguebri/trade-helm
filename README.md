@@ -6,7 +6,8 @@ following features (takes this as a TODO list also):
 
 ## TODO
 - [x] Link style button.
-- [ ] Create List and ListItem components.
+- [x] Create ListItem component.
+- [ ] Create List component.
 - [ ] Use localStorage in order to persist data.
 - [ ] Fix styling in order to keep consistency with the suggested
 mockups.

@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  background-color: white;
+  padding: 16px;
+  border-radius: 4px;
+  width: 100%;
+  justify-content: space-between;
+
+  span {
+    font-weight: 700;
+  }
+}

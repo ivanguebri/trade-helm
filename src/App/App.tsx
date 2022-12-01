@@ -12,6 +12,7 @@ import Button from "../ui/controls/Button";
 import Modal from "../ui/presentation/Modal";
 import TextField from "../ui/controls/TextField";
 import ModalFooter from "../ui/presentation/ModalFooter";
+import ListItem from "../ui/presentation/ListItem";
 
 export default function App(): JSX.Element {
   const [items, setItems] = useState<TItem[]>([]);
@@ -36,7 +37,7 @@ export default function App(): JSX.Element {
     setIsModalVisible(false);
   };
 
-  const onRemove = (id: TItem["id"]) => {
+  const onDelete = (id: TItem["id"]) => {
     itemsAPI.remove(id).then((removedId) => {
       setItems(items.filter((item) => item.id !== removedId));
     });
@@ -65,12 +66,11 @@ export default function App(): JSX.Element {
       </header>
       <ul>
         {items.map((item) => (
-          <li key={item.id}>
-            {item.text}
-            <Button variant={EVariant.Link} onClick={() => onRemove(item.id)}>
-              delete
-            </Button>
-          </li>
+          <ListItem
+            key={item.id}
+            onDelete={() => onDelete(item.id)}
+            item={item}
+          />
         ))}
       </ul>
       <Button colorScheme={EColorScheme.Primary} onClick={onOpenModal}>

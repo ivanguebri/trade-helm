@@ -24,10 +24,14 @@ export default {
       setTimeout(() => resolve(items), API_TIMEOUT)
     );
   },
-  create: async (text: TItem["text"]): Promise<TItem> =>
-    new Promise((resolve) =>
-      setTimeout(() => resolve({ id: +new Date(), text }), API_TIMEOUT)
-    ),
+  create: async (text: TItem["text"]): Promise<TItem> => {
+    const items: TItem[] = JSON.parse(localStorage.getItem("items") || "[]");
+    const newItem: TItem = { id: +new Date(), text };
+    localStorage.setItem("items", JSON.stringify(items.concat(newItem)));
+    return new Promise((resolve) =>
+      setTimeout(() => resolve(newItem), API_TIMEOUT)
+    );
+  },
   remove: async (id: TItem["id"]): Promise<TItem["id"]> =>
     new Promise((resolve) => setTimeout(() => resolve(id))),
 };

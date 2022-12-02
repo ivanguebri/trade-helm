@@ -18,8 +18,12 @@ const MOCK_ITEMS: TItem[] = [
 const API_TIMEOUT = 0;
 
 export default {
-  list: async (): Promise<TItem[]> =>
-    new Promise((resolve) => setTimeout(() => resolve(MOCK_ITEMS), API_TIMEOUT)),
+  list: async (): Promise<TItem[]> => {
+    const items: TItem[] = JSON.parse(localStorage.getItem("items") || "[]");
+    return new Promise((resolve) =>
+      setTimeout(() => resolve(items), API_TIMEOUT)
+    );
+  },
   create: async (text: TItem["text"]): Promise<TItem> =>
     new Promise((resolve) =>
       setTimeout(() => resolve({ id: +new Date(), text }), API_TIMEOUT)

@@ -1,20 +1,5 @@
 import { TItem } from "./types";
 
-const MOCK_ITEMS: TItem[] = [
-  {
-    id: 1,
-    text: "Helado de pejelagarto",
-  },
-  {
-    id: 2,
-    text: "Leche",
-  },
-  {
-    id: 3,
-    text: "Queso",
-  },
-];
-
 const API_TIMEOUT = 0;
 
 export default {

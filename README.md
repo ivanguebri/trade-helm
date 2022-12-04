@@ -11,6 +11,7 @@ following features (takes this as a TODO list also):
 - [ ] Use localStorage in order to persist data.
   - [X] List API method.
   - [X] Create API method.
+  - [X] Remove API method.
 - [x] Fix styling in order to keep consistency with the suggested
 mockups.
 

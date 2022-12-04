@@ -32,6 +32,12 @@ export default {
       setTimeout(() => resolve(newItem), API_TIMEOUT)
     );
   },
-  remove: async (id: TItem["id"]): Promise<TItem["id"]> =>
-    new Promise((resolve) => setTimeout(() => resolve(id))),
+  remove: async (id: TItem["id"]): Promise<TItem["id"]> => {
+    const items: TItem[] = JSON.parse(localStorage.getItem("items") || "[]");
+    localStorage.setItem(
+      "items",
+      JSON.stringify(items.filter((item) => item.id !== id))
+    );
+    return new Promise((resolve) => setTimeout(() => resolve(id)));
+  },
 };

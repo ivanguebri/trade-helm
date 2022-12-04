@@ -8,12 +8,14 @@ following features (takes this as a TODO list also):
 - [x] Link style button.
 - [x] Create ListItem component.
 - [x] Create List component.
-- [ ] Use localStorage in order to persist data.
-  - [X] List API method.
-  - [X] Create API method.
-  - [X] Remove API method.
+- [x] Use localStorage in order to persist data.
+  - [x] List API method.
+  - [x] Create API method.
+  - [x] Remove API method.
 - [x] Fix styling in order to keep consistency with the suggested
 mockups.
+- [x] Add favicon.
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
